@@ -3,7 +3,7 @@ using ProductService.BLL.DTO;
 using ProductService.DAL.Entities;
 
 
-namespace eCommerce.BusinessLogicLayer.Mappers;
+namespace ProductService.BLL.Mappers;
 
 public class ProductAddRequestToProductMappingProfile : Profile
 {

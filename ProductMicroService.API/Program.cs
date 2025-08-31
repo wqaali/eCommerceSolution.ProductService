@@ -2,7 +2,7 @@ using FluentValidation.AspNetCore;
 using ProductMicroService.API.Middleware;
 using ProductService.DAL;  // for AddDataAccessLayer
 using ProductService.BLL;
-using eCommerce.ProductsMicroService.API.APIEndpoints;  // for AddBusinessLogicLayer
+using ProductsMicroService.API.APIEndpoints;  // for AddBusinessLogicLayer
 
 namespace ProductMicroService.API
 {

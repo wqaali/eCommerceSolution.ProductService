@@ -1,9 +1,9 @@
-﻿using eCommerce.BusinessLogicLayer.ServiceContracts;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Results;
 using ProductService.BLL.DTO;
+using ProductService.BLL.ServiceContracts;
 
-namespace eCommerce.ProductsMicroService.API.APIEndpoints;
+namespace ProductsMicroService.API.APIEndpoints;
 
 public static class ProductAPIEndpoints
 {
@@ -15,6 +15,7 @@ public static class ProductAPIEndpoints
             List<ProductResponse?> products = await productsService.GetProducts();
             return Results.Ok(products);
         });
+
 
         //GET /api/products/search/product-id/00000000-0000-0000-0000-000000000000
         app.MapGet("/api/products/search/product-id/{ProductID:guid}", async (IProductsService productsService, Guid ProductID) =>
@@ -96,7 +97,6 @@ public static class ProductAPIEndpoints
             else
                 return Results.Problem("Error in deleting product");
         });
-
         return app;
-  }
+    }
 }

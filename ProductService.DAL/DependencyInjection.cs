@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ProductService.DAL.context;
+using ProductService.DAL.Repositories;
+using ProductService.DAL.RepositoryContracts;
 
 namespace ProductService.DAL;
 
@@ -14,7 +16,7 @@ public static class DependencyInjection
         {
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")!);
         });
-
+        services.AddScoped<IProductsRepository, ProductsRepository>();
         return services;
   }
 }

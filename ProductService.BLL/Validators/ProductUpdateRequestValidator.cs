@@ -1,7 +1,7 @@
 ﻿using ProductService.BLL.DTO;
 using FluentValidation;
 
-namespace eCommerce.BusinessLogicLayer.Validators;
+namespace ProductService.BLL.Validators;
 
 public class ProductUpdateRequestValidator : AbstractValidator<ProductUpdateRequest>
 {

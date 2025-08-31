@@ -2,7 +2,7 @@
 using ProductService.DAL.Entities;
 using System.Linq.Expressions;
 
-namespace eCommerce.BusinessLogicLayer.ServiceContracts;
+namespace ProductService.BLL.ServiceContracts;
 
 public interface IProductsService
 {
