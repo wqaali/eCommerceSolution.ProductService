@@ -28,8 +28,7 @@ namespace ProductMicroService.API
 
             //FluentValidations
             builder.Services.AddFluentValidationAutoValidation();
-            var app = builder.Build();
-          
+            var app = builder.Build();            
             app.UseExceptionHandlingMiddleware();
             app.UseRouting();
             //Auth

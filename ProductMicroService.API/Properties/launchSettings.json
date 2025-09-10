@@ -4,7 +4,11 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "HOST_NAME": "DESKTOP-JF8AB6O",
+        "DB_NAME": "ecommerceproductsdatabase",
+        "DB_USER": "sa",
+        "DB_PASSWORD": "Sa@1234"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5017"
@@ -13,7 +17,11 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "HOST_NAME": "DESKTOP-JF8AB6O",
+        "DB_NAME": "ecommerceproductsdatabase",
+        "DB_USER": "sa",
+        "DB_PASSWORD": "Sa@1234"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7185;http://localhost:5017"
@@ -22,7 +30,11 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "HOST_NAME": "DESKTOP-JF8AB6O",
+        "DB_NAME": "ecommerceproductsdatabase",
+        "DB_USER": "sa",
+        "DB_PASSWORD": "Sa@1234"
       }
     },
     "Docker": {

@@ -9,6 +9,9 @@ public static class ProductAPIEndpoints
 {
   public static IEndpointRouteBuilder MapProductAPIEndpoints(this IEndpointRouteBuilder app)
   {
+        //GET /api/test
+        app.MapGet("/api/test",()=>"Hello Waqar");
+
         //GET /api/products
         app.MapGet("/api/products", async (IProductsService productsService) =>
         {
@@ -21,6 +24,9 @@ public static class ProductAPIEndpoints
         app.MapGet("/api/products/search/product-id/{ProductID:guid}", async (IProductsService productsService, Guid ProductID) =>
         {
             ProductResponse? product = await productsService.GetProductByCondition(temp => temp.ProductID == ProductID);
+            if (product == null)
+                return Results.NotFound();
+
             return Results.Ok(product);
         });
 
