@@ -22,8 +22,8 @@ RUN dotnet publish "./ProductMicroService.API.csproj" -c $BUILD_CONFIGURATION -o
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENV HOST_NAME= ""sqlexp,1433"",
-ENV DB_NAME=eCommerceProductDB,
-ENV DB_USER=sa,
-ENV DB_PASSWORD=Sa@1234
+ENV HOST_NAME = sqlexp,1433
+ENV DB_NAME = eCommerceProductDB
+ENV DB_USER = sa
+ENV DB_PASSWORD = Sa@12345
 ENTRYPOINT ["dotnet", "ProductMicroService.API.dll"]
