@@ -6,18 +6,18 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  -name: dockerRegistryServiceConnection
-   value: '7f838c3d-395a-4570-ad7b-023c0e40f38f'
-  -name: imageRepository
-   value: 'products-microservice'
-  -name: containerRegistry
-   value: 'waaecommerceregistry.azurecr.io'
-  -name: dockerfilePath
-   value: '$(Build.SourcesDirectory)/ProductMicroService.API/Dockerfile'
-  -name: tag
-   value: '$(Build.BuildId)'
-  -name: vmImageName
-   value: 'ubuntu-latest'
+  - name: dockerRegistryServiceConnection
+    value: '7f838c3d-395a-4570-ad7b-023c0e40f38f'
+  - name: imageRepository
+    value: 'products-microservice'
+  - name: containerRegistry
+    value: 'waaecommerceregistry.azurecr.io'
+  - name: dockerfilePath
+    value: '$(Build.SourcesDirectory)/ProductMicroService.API/Dockerfile'
+  - name: tag
+    value: '$(Build.BuildId)'
+  - name: vmImageName
+    value: 'ubuntu-latest'
 
 stages:
 - stage: Build
