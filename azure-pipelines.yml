@@ -1,23 +1,23 @@
-# Docker
-# Build and push an image to Azure Container Registry
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
-- master
+- dev
 
 resources:
 - repo: self
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '7f838c3d-395a-4570-ad7b-023c0e40f38f'
-  imageRepository: 'productsmicroservice'
-  containerRegistry: 'waaecommerceregistry.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/ProductMicroService.API/Dockerfile'
-  tag: '$(Build.BuildId)'
-
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  -name: dockerRegistryServiceConnection
+   value: '7f838c3d-395a-4570-ad7b-023c0e40f38f'
+  -name: imageRepository
+   value: 'products-microservice'
+  -name: containerRegistry
+   value: 'waaecommerceregistry.azurecr.io'
+  -name: dockerfilePath
+   value: '$(Build.SourcesDirectory)/ProductMicroService.API/Dockerfile'
+  -name: tag
+   value: '$(Build.BuildId)'
+  -name: vmImageName
+   value: 'ubuntu-latest'
 
 stages:
 - stage: Build
