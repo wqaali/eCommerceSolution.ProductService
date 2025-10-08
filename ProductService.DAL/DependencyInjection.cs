@@ -13,13 +13,14 @@ public static class DependencyInjection
   {
         //TO DO: Add Data Access Layer services into the IoC container
         var connectionStringTemplate=configuration.GetConnectionString("DefaultConnection")!;
-        string connectionStringValues = connectionStringTemplate.Replace("$HOST_NAME", Environment.GetEnvironmentVariable("HOST_NAME")).
-        Replace("$DB_NAME", Environment.GetEnvironmentVariable("DB_NAME")).
-        Replace("$DB_USER", Environment.GetEnvironmentVariable("DB_USER")).
-        Replace("$DB_PASSWORD", Environment.GetEnvironmentVariable("DB_PASSWORD"));
+        string connectionStringValues = connectionStringTemplate.Replace("$MYSQL_HOST", Environment.GetEnvironmentVariable("MYSQL_HOST")).
+        Replace("$MYSQL_DATABASE", Environment.GetEnvironmentVariable("MYSQL_DATABASE")).
+        Replace("$MYSQL_USER", Environment.GetEnvironmentVariable("MYSQL_USER")).
+        Replace("$MYSQL_PASSWORD", Environment.GetEnvironmentVariable("MYSQL_PASSWORD")).
+        Replace("$MYSQL_PORT", Environment.GetEnvironmentVariable("MYSQL_PORT"));
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseSqlServer(connectionStringValues!);
+            options.UseMySql(connectionStringValues!, ServerVersion.AutoDetect(connectionStringValues!));
         });
         services.AddScoped<IProductsRepository, ProductsRepository>();
         return services;

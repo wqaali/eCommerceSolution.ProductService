@@ -3,6 +3,7 @@ using AutoMapper;
 using FluentValidation;
 using FluentValidation.Results;
 using ProductService.BLL.DTO;
+using ProductService.BLL.RabbitMQ;
 using ProductService.BLL.ServiceContracts;
 using ProductService.DAL.Entities;
 using ProductService.DAL.RepositoryContracts;
@@ -16,14 +17,16 @@ public class ProductsService : IProductsService
     private readonly IValidator<ProductUpdateRequest> _productUpdateRequestValidator;
     private readonly IMapper _mapper;
     private readonly IProductsRepository _productsRepository;
+    private readonly IRabbitMQPublisher _rabbitMqPublisher;
 
 
-    public ProductsService(IValidator<ProductAddRequest> productAddRequestValidator, IValidator<ProductUpdateRequest> productUpdateRequestValidator, IMapper mapper, IProductsRepository productsRepository)
+    public ProductsService(IValidator<ProductAddRequest> productAddRequestValidator, IValidator<ProductUpdateRequest> productUpdateRequestValidator, IMapper mapper, IProductsRepository productsRepository,IRabbitMQPublisher rabbitMQPublisher)
     {
         _productAddRequestValidator = productAddRequestValidator;
         _productUpdateRequestValidator = productUpdateRequestValidator;
         _mapper = mapper;
         _productsRepository = productsRepository;
+        _rabbitMqPublisher = rabbitMQPublisher;
     }
 
 
@@ -71,6 +74,18 @@ public class ProductsService : IProductsService
 
         //Attempt to delete product
         bool isDeleted = await _productsRepository.DeleteProduct(productID);
+        if (isDeleted)
+        {
+            //string routeKey = "Product.delete";
+            var headers = new Dictionary<string, object>()
+            {
+                {"event","Product.delete"},
+                {"RowCount",1}
+            };
+
+            var message = new ProductNameUpdateMessage(existingProduct.ProductID, existingProduct.ProductName);
+            _rabbitMqPublisher.Publish<ProductNameUpdateMessage>(headers, message);
+        }
         return isDeleted;
     }
 
@@ -130,6 +145,20 @@ public class ProductsService : IProductsService
 
         //Map from ProductUpdateRequest to Product type
         Product product = _mapper.Map<Product>(productUpdateRequest); //Invokes ProductUpdateRequestToProductMappingProfile
+
+        var isChanged= !existingProduct.ProductName.Equals(product.ProductName);
+        if(isChanged)
+        {
+            //string routeKey = "Product.Update.Name";
+            var headers = new Dictionary<string, object>()
+            {
+                {"event","Product.Update.Name"},
+                {"field","Name"},
+                {"RowCount",1}
+            };
+            var message = new ProductNameUpdateMessage(product.ProductID,product.ProductName );
+            _rabbitMqPublisher.Publish<ProductNameUpdateMessage>(headers, message);
+        }
 
         Product? updatedProduct = await _productsRepository.UpdateProduct(product);
 

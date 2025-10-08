@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using ProductService.BLL.Mappers;
+using ProductService.BLL.RabbitMQ;
 using ProductService.BLL.ServiceContracts;
 using ProductService.BLL.Validators;
 namespace ProductService.BLL;
@@ -13,6 +14,7 @@ public static class DependencyInjection
         services.AddAutoMapper(typeof(ProductAddRequestToProductMappingProfile).Assembly);
         services.AddValidatorsFromAssemblyContaining<ProductAddRequestValidator>();
         services.AddScoped<IProductsService, ProductService.BLL.Services.ProductsService>();
+        services.AddTransient<IRabbitMQPublisher, RabbitMQPublisher>();
         return services;
   }
 }
