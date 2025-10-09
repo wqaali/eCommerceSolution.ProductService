@@ -71,8 +71,7 @@ stages:
       inputs:
         testSelector: 'testAssemblies'
         testAssemblyVer2: |
-          **\bin\**\*ProductsUnitTest.dll
-          **\bin\**\*tests.dll
+          **\ProductsUnitTest.dll
         searchFolder: '$(System.DefaultWorkingDirectory)'
         runTestsInIsolation: true
         codeCoverageEnabled: true

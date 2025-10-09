@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34601.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMicroService.API", "ProductMicroService.API\ProductMicroService.API.csproj", "{5D8B9055-921F-4DAF-B07B-D3CAE3457C49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductMicroService.API", "ProductMicroService.API\ProductMicroService.API.csproj", "{5D8B9055-921F-4DAF-B07B-D3CAE3457C49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService.DAL", "ProductService.DAL\ProductService.DAL.csproj", "{32E44C87-E73E-4F09-8C4D-245AA1B22DE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService.DAL", "ProductService.DAL\ProductService.DAL.csproj", "{32E44C87-E73E-4F09-8C4D-245AA1B22DE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService.BLL", "ProductService.BLL\ProductService.BLL.csproj", "{6D824D78-038C-467D-B889-BFA2B84D02DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService.BLL", "ProductService.BLL\ProductService.BLL.csproj", "{6D824D78-038C-467D-B889-BFA2B84D02DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsUnitTest", "ProductsUnitTest\ProductsUnitTest.csproj", "{98AD728E-8E56-42C6-A890-7C7E908D5887}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6D824D78-038C-467D-B889-BFA2B84D02DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D824D78-038C-467D-B889-BFA2B84D02DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D824D78-038C-467D-B889-BFA2B84D02DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98AD728E-8E56-42C6-A890-7C7E908D5887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98AD728E-8E56-42C6-A890-7C7E908D5887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98AD728E-8E56-42C6-A890-7C7E908D5887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98AD728E-8E56-42C6-A890-7C7E908D5887}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
